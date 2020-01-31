@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>List Creator</title>
+    </head>
+
+    <body>
+        <p>Please add an item:</p>
+        <input type="text" id="item"><br>
+        <button id="add-item">Save</button>
+        <button id="clear-button">Clear</button>
+
+        <ul id="item-list">
+            <!-- Build this with JavaScript. -->
+        </ul>
+
+    </body>
+
+    <script>
+        // Textbox
+        let itemInput = document.querySelector('#item')
+        // Buttons
+        let addButton = document.querySelector('#add-item')
+        let clearButton = document.querySelector('#clear-button')
+        // List
+        let listItems = document.querySelector('#item-list')
+
+        addButton.addEventListener('click', function() {
+            var focustextbox = document.getElementById("item")
+            focustextbox.focus();
+            focustextbox.scrollIntoView();
+
+            let item = itemInput.value
+
+            if (item.length === 0) { // No empty items
+                alert('Empty entry')
+            } else if (item.length > 50) { // No long entries
+                alert('Too many characters!')
+            } else if (listItems.childElementCount > 9) {
+                alert('List is too long!')
+            } else {
+                // Append to list
+                let listItem = document.createElement('li')
+                listItem.innerHTML = item
+                listItems.appendChild(listItem)
+
+                // Clear input
+                itemInput.value = ''   
+            }
+        })
+
+        clearButton.addEventListener('click', function() {
+            listItems.innerHTML = ''
+            itemInput.value = ''
+        })
+
+    </script>
+</html>
+
