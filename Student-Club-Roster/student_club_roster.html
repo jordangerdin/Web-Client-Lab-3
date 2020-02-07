@@ -80,11 +80,7 @@
             let listEntry = document.createElement('li')
             // Add 'selected' class toggle on click to list item
             listEntry.addEventListener('click', function(){
-                if(listEntry.className == "selected"){
-                    listEntry.classList.remove("selected")
-                } else {
-                    listEntry.classList.add("selected")
-                }
+                toggleSelected(this)
             })
             listEntry.innerHTML = `${student.value}, ID: ${studentId.value}, GPA: ${studentGpa.value}`
             
@@ -113,6 +109,11 @@
     function updateCount() {
         studentCount.innerHTML = count
     }
+
+    function toggleSelected(el) {
+        el.classList.toggle('selected')
+    }
+
 </script>
 
 </body>
